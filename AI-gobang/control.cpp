@@ -100,7 +100,7 @@ void Control::giveUpSignal(ChessColorPro)
 {
     QMessageBox msgBox;
     msgBox.setText("Warning ");
-    msgBox.setInformativeText("Do you want to gave up ?");
+    msgBox.setInformativeText("Do you want to give up ?");
     msgBox.setStandardButtons(QMessageBox::No | QMessageBox::Yes);
     msgBox.setDefaultButton(QMessageBox::No);
     int ret = msgBox.exec();
