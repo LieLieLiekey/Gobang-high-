@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/png">
+        <file>image/black.png</file>
+        <file>image/board.png</file>
+        <file>image/white.png</file>
+        <file>image/exit.png</file>
+        <file>image/surrender.png</file>
+        <file>image/gobangtitle.png</file>
+        <file>image/Title.png</file>
+    </qresource>
+</RCC>
