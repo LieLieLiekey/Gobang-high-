@@ -8,7 +8,7 @@
 
 ## Usage
 
-项目采用`C++`语言，使用QT库开发，基于的Kits是`Desktop Qt 5.9.9 MSVC2019 64bit`，使用`qmake`构建，`c++`编译环境为`c++11`。程序入口在`main.cpp`内
+项目采用`C++`语言，使用QT库开发，基于的Kits是`Desktop Qt 5.9.9 MSVC2019 64bit`，使用`qmake`构建，`c++`标准为`c++11`。程序入口在`main.cpp`内
 
 ## The game picture
 
