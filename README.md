@@ -6,6 +6,8 @@
 
 这是基于之前的AI-Gobang项目开发的五子棋，因为之前的AI-Gobang项目没有用任何设计模式的思想，导致程序丝毫没有架构体验。所以这次做Gobang的目的不只是为了改进游戏界面和游戏功能，更重要的是复习学过的设计模式。
 
+AI模式中，AI下棋算法使用的是极大极小值算法，通过枚举每个空闲位置（自己在这个位置和地方在这个位置），计算出获得的势，找出最大势的位置作为下棋位置。
+
 ## Usage
 
 项目采用`C++`语言，使用QT库开发，基于的Kits是`Desktop Qt 5.9.9 MSVC2019 64bit`，使用`qmake`构建，`c++`标准为`c++11`。程序入口在`main.cpp`内
@@ -53,7 +55,7 @@
 
 ## Scheme
 
-项目基于MVC设计模式思想进行开发，其中Model包括 `boardModel,ChesserMan,chessAI`，View包括`BoardFrame,ShowInfoFrame,selectModelDialogUi`，Contorl是基于接口`ControlInterface`的`Control` 负责把将Model和View整合到一起，并进行合作。
+项目基于MVC设计模式思想进行开发，其中Model包括 `boardModel,ChesserMan,chessAI`，View包括`BoardFrame,ShowInfoFrame,selectModelDialogUi`，Contorl是基于接口`ControlInterface`的`Control` 负责把将Model和View整合到一起，并进行合作。
 
 #### 类关系图
 
