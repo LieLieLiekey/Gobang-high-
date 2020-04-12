@@ -72,7 +72,7 @@ int ChesserAI::envaluateAt(Position p, ChessColorPro self,BoardModelInterface * 
     1 is self
     2 is opposite
     0 is nochess
-    * is anything
+    * is self position
 */
     int value = 0;
     ChessColorPro opposite = (self == ChessColorPro::BLACK) ? ChessColorPro::WHITE : ChessColorPro::BLACK; // 敌对方是谁
@@ -84,7 +84,7 @@ int ChesserAI::envaluateAt(Position p, ChessColorPro self,BoardModelInterface * 
                 && getChessColor(p,i,3,bd) == self && getChessColor(p,i,4,bd) == self
                 && getChessColor(p,i,5,bd) == NOCHESS)
         {
-            value+=10000;  // 10万
+            value+=1000000;  // 100w
         }
 
         // 判断是否存在 21111* （死四A）  如果是己方则下子获得胜利，对手的话要竭力去赌
@@ -92,87 +92,87 @@ int ChesserAI::envaluateAt(Position p, ChessColorPro self,BoardModelInterface * 
                 && getChessColor(p,i,3,bd) == self &&getChessColor(p,i,4,bd) == self
                 &&( getChessColor(p,i,5,bd) == opposite|| getChessColor(p, i, 5,bd) ==OUTRANGE))
         {
-            value += 10000; // 1k
+            value += 100000; // 10w
         }
 
         // 判断是否存在 111*1 （死四B）
         if(getChessColor(p,i,-1,bd) == self &&getChessColor(p,i,1,bd) == self
                 && getChessColor(p,i,2,bd) == self &&getChessColor(p,i,3,bd) == self)
         {
-            value += 10000; // 1k
+            value += 100000; // 10w
 
         }
         //判断是否存在11*11 死四C
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, -1,bd) == self && getChessColor(p, i, -2,bd) == self)
         {
-            value += 10000;
+            value += 50000;// 5w
         }
         //判断是否存在活三 *1110
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i, 4,bd) == NOCHESS)
         {
-            value += 10000;
+            value += 50000;// 5w
         }
 
         //  01*110  活三
         if (getChessColor(p, i, -1,bd) == self && getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == NOCHESS && getChessColor(p, i, -2,bd)==NOCHESS)
         {
-            value += 1000;
+            value += 50000;//5w
         }
         //0*1112  死三
         if (getChessColor(p, i, -1,bd) == NOCHESS && getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == self && (getChessColor(p, i, 4,bd)==opposite|| getChessColor(p, i, 4,bd)==OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //*01112
         if (getChessColor(p, i, 4,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 1,bd) == NOCHESS &&( getChessColor(p, i, 4,bd)==opposite|| getChessColor(p, i, 4,bd) == OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //01*112
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, -1,bd) == self && getChessColor(p, i, -2,bd) == NOCHESS &&( getChessColor(p, i, 3,bd) == opposite|| getChessColor(p, i, 3,bd) == OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //*10112
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i,4,bd) == self && getChessColor(p, i, 2,bd) == NOCHESS && (getChessColor(p, i, 4,bd) == opposite|| getChessColor(p, i, 4,bd) == OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //*11012
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 4,bd) == self && getChessColor(p, i, 3,bd) == NOCHESS && (getChessColor(p, i, 4,bd) == opposite|| getChessColor(p, i, 4,bd) == OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //011*12
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, -2,bd) == self && getChessColor(p, i, -1,bd) == self && getChessColor(p, i, -3,bd) == NOCHESS && (getChessColor(p, i, 2,bd) == opposite|| getChessColor(p, i, 2,bd) == OUTRANGE))
         {
-            value += 100;
+            value += 10000;//1w
         }
         //10*11
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, -2,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, -1,bd) == NOCHESS )
         {
 
-            value += 100;
+            value += 1000;//1k
         }
         //1*011
         if (getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i, -1,bd) == self && getChessColor(p, i, 1,bd) == NOCHESS)
         {
-            value += 100;
+            value += 1000;//1k
         }
         //1*101
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i, -1,bd) == self && getChessColor(p, i, 2,bd) == NOCHESS )
         {
-            value += 100;
+            value += 1000;//1k
         }
         //2*1110
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == self && getChessColor(p, i, 4,bd) == NOCHESS && (getChessColor(p, i, -1,bd) == opposite||getChessColor(p, i, -1,bd)==OUTRANGE))
         {
-            value += 100;
+            value += 1000;//1k
         }
         //20111*
         if (getChessColor(p, i, -1,bd) == self && getChessColor(p, i, -2,bd) == self && getChessColor(p, i, -3,bd) == self && getChessColor(p, i, -4,bd) == NOCHESS && (getChessColor(p, i, -5,bd) == opposite|| getChessColor(p, i, -5,bd) == OUTRANGE))
         {
-            value+= 100;
+            value+= 1000;
         }
         ////活二 0*110
         if (getChessColor(p, i, 1,bd) == self && getChessColor(p, i, 2,bd) == self && getChessColor(p, i, 3,bd) == NOCHESS && getChessColor(p, i, -1,bd) == NOCHESS)

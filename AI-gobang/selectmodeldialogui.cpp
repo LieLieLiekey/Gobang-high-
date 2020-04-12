@@ -11,10 +11,12 @@ SelectModelDialogUi::SelectModelDialogUi(QWidget *parent) :
     user1_line=ui->user1_line;
     user2_line=ui->user2_line;
     enter_bt=ui->enter_button;
+
     connect(ai_radio,&QRadioButton::clicked,[&](){
         model=AI_MODEl;
         setAiModel();
     });//checked
+
     connect(double_radio,&QRadioButton::clicked,[&](){
         model=DOUBLE_MODEL;
         setDoubleModel();
